@@ -1,0 +1,157 @@
+<div class="container" *ngIf="divMenus">
+    <div class="menus_div">
+        <h4>Menus</h4>
+        <button class="rounded__button btn" (click)="ShowNewMenus()"><mat-icon>add</mat-icon> New Menu</button>
+    </div>
+
+    <div class="card">
+        <p-table #dt1 [value]="menu" dataKey="id" [tableStyle]="{'min-width': '68rem'}"
+            [globalFilterFields]="['name','menuDaysHrs','categoryMapping','menuItemCount']">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="menuDaysHrs" style="width:20%">Menu Hours <p-sortIcon
+                            field="menuDaysHrs"></p-sortIcon></th>
+                    <th style="width:30%">Categories</th>
+                    <th style="width:20%">Items</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-desc>
+                <tr>
+                    <td><a class="menu__name__link" (click)="editMenu(desc?.menuId)">{{desc?.name}}</a></td>
+                    <td pTooltip={{desc?.menuDaysHrs}} tooltipPosition="top">{{getLimitedText(desc?.menuDaysHrs,5)}}
+                    </td>
+                    <td>{{desc?.menuCategory || '-'}}</td>
+                    <td>{{desc?.itemCount + ' delivery items'}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="4">No menus found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="menu_select_options">
+        <p-dropdown [options]="menu" #menuList optionLabel="name" optionValue="menuId" placeholder="Select..." (onChange)="getFilteredMenu(menuList.value)"></p-dropdown>
+    </div>
+    <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!"
+        [plotOptions]="chartOptions.plotOptions!"></apx-chart>
+    <div class="container_spacing"></div>
+</div>
+
+<!-- New Category div -->
+<div class="container" *ngIf="divAddMenus">
+    <div class="addMenu_div">
+        <div>
+            <mat-icon class="custom_addMenu_row" (click)="CnfrmbackToMenuDiv()">arrow_back</mat-icon>
+            <p-dialog header="Header" [(visible)]="infoDialogVisible" [style]="{ width: '45vw' }" [modal]="true" [draggable]="false"
+                [resizable]="false">
+                <ng-template pTemplate="header">
+                    <span class="menu-info-header menu-info-text-color">Are you sure you want to leave this page</span>
+                </ng-template>
+                <p class="menu-content-text-color">If you leave this page, the changes you have made will not be saved. Click cancel
+                    to return to the page and save your changes.</p>
+                <ng-template pTemplate="footer">
+                    <p-button (click)="infoDialogVisible = false" label="Cancel" styleClass="p-button-cancel"></p-button>
+                    <p-button (click)="backToMenuDiv()" label="Leave this page" styleClass="p-button-confrm"></p-button>
+                </ng-template>
+            </p-dialog>
+        </div>
+        <div class="addMenu_btns">
+            <button class="rounded__button btn__light" *ngIf="showDeleteBtn" (click)="confirmDelete()">Delete</button>
+            <p-dialog header="Header" [(visible)]="deleteDialogVisible" [style]="{ width: '45vw' }" [modal]="true" [draggable]="false"
+                [resizable]="false">
+                <ng-template pTemplate="header">
+                    <span class="menu-info-header menu-info-text-color">Delete Menu</span>
+                </ng-template>
+                <p class="menu-content-text-color">When you delete a menu, customers won’t be able to see it anymore. Any categories, items, or modifier groups used in this menu are still saved.</p>
+                <ng-template pTemplate="footer">
+                    <p-button (click)="deleteDialogVisible = false" label="Cancel" styleClass="p-button-cancel"></p-button>
+                    <p-button (click)="deleteMenuById()" label="Delete Menu" styleClass="p-button-delete"></p-button>
+                </ng-template>
+            </p-dialog>
+            <button class="rounded__button btn__light" [disabled]="true">Duplicate</button>
+            <button class="rounded__button btn" *ngIf="showSaveBtn" (click)="saveAddMenus()">Save</button>
+            <button class="rounded__button btn" *ngIf="showUpdateBtn" (click)="saveEditMenus()">Update</button>
+        </div>
+    </div>
+    <form [formGroup]="addMenuForm" class="newMenu__field">
+        <div class="addMenuName__field">
+            <input type="text"
+                [ngClass]="addMenuForm.get('MenuName')?.touched && addMenuForm.get('MenuName')?.errors?.['required'] ? 'addMenu__Nameinput_Active' : 'addMenu__Nameinput' "
+                formControlName="MenuName" placeholder="Name" pInputText>
+            <i class="pi pi-calendar-plus" *ngIf="addNotesLabel" (click)="showAddNotesDiv()">Add Note</i>
+            <label *ngIf="addMenuForm.get('MenuName')?.touched && addMenuForm.get('MenuName')?.errors?.['required']"
+                class="menuName-validation-message">
+                This field is required.
+            </label>
+        </div>
+        <div class="addMenu__remarks" *ngIf="addNotesDiv">
+            <input class="addMenu__Remarksinput" type="text" formControlName="Remarks" placeholder="Enter Notes"
+                pInputText>
+            <label class="addMenu__remarksLbl">Notes help you identify specific modifier groups. They’re only visible to
+                you.</label>
+        </div>
+        <div class="addMenuSlot_lbl">
+            <label class="menu_lbl">Menu Availability</label>
+        </div>
+
+        <!-- Render additional sections -->
+        <div formArrayName="additionalSections" *ngFor="let section of menuDaysTime.controls; let i = index">
+            <div [formGroupName]="i" class="addMenu_timings_div">
+                <div class="addMenu_timeSlot">
+                    <div class="removeicon_div">
+                        <button class="menuAddDiv_hide" *ngIf="menuAddBtnHide(i)" (click)="removeSection(i)">
+                            <p-avatar icon="pi pi-times" styleClass="mr-2"
+                                [style]="{ 'background-color': 'transparent' }"></p-avatar>
+                        </button>
+                    </div>
+                    <div class="menuDays__div">
+                        <p-selectButton class="menyDays_btn" formControlName="WeekDays" [options]="menuDays"
+                            optionLabel="name" optionValue="value" [multiple]="true"></p-selectButton>
+                    </div>
+                    <div class="menuTimings__chart">
+                        <div class="scheduler-chart">
+                            <div class="timings" *ngFor="let timing of rangeBarTime; let j = index">
+                                <div class="cell" [ngClass]="getRangeCellStyle(timing.name, i, j)"></div>
+                                <div class="time-header">{{ timing.name }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menuTimings__dropdown">
+                        <div class="align__menuTimings">
+                            <label class="menuTime__lbl">Start Time</label>
+                            <p-dropdown formControlName="StartTime" [options]="menuStartTime" optionLabel="name"
+                                optionValue="value" placeholder="Select..."></p-dropdown>
+                        </div>
+                        <div class="align__menuTimings">
+                            <label class="menuTime__lbl">End Time</label>
+                            <p-dropdown formControlName="EndTime" [options]="menuEndTime" optionLabel="name"
+                                optionValue="value" placeholder="Select..."></p-dropdown>
+                        </div>
+                    </div>
+                    <p-checkbox class="addMenuChk__Custom" value="val1" label="Open 24 Hours"></p-checkbox>
+                    <!-- Add other form controls for additional section if needed -->
+                </div>
+            </div>
+            <!-- <label *ngIf="addMenuForm.get('additionalSections')?.get('StartTime')?.touched && addMenuForm.get('additionalSections')?.get('StartTime')?.errors?.['required'] && addMenuForm.get('additionalSections')?.get('EndTime')?.touched && addMenuForm.get('additionalSections')?.get('EndTime')?.errors?.['required']" class="menuName-validation-message">
+                This field is required.
+            </label> -->
+        </div>
+
+        <label class="addMenuDaysTime_lbl" (click)="addMoreDaysAndTimes()">Add More Days and Times</label>
+    </form>
+    <p-toast position="bottom-center" key="saveAlert"></p-toast>
+    <p-toast position="bottom-center" key="errorAlert"></p-toast>
+    <div class="container_spacing"></div>
+</div>

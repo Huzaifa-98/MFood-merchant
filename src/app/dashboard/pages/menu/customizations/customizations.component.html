@@ -1,0 +1,94 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end" opened>
+        <!-- Content of your drawer goes here -->
+        <div>
+            <div *ngIf="!showCustomization" class="cstmize__div">
+                Select an item to edit details
+            </div>
+            <div *ngIf="showCustomization">
+                <div class="cstmize__maindiv">
+                    <div class="cstmize__btnIcons">
+                        <button mat-icon-button (click)="backToMain()"><mat-icon>arrow_back</mat-icon></button>
+                        <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+                    </div>
+                    <div class="cstmize__namediv">
+                        <div class="cstmize__heading">Customizations</div>
+                        <div class="cstmize__body">
+                            <div>
+                                <div class="cstmize__bodydetails">Customer instructions</div>
+                                <div class="cstmize__bodyoptions">Choose your drink</div>
+                            </div>
+                            <div><button mat-icon-button class="cstm__editbtn"><mat-icon class="custom__icon">border_color</mat-icon></button></div>
+                        </div>
+                        <div class="cstmize__bodynotes">
+                            <div class="cstmize__bodydetails">Notes</div>
+                            <div class="cstmize__bodyoptions">Enter Notes</div>
+                        </div>
+                    </div>
+                    <div class="cstmize__line"></div>
+                </div>
+            </div>
+            <p-toast position="bottom-center" key="saveAlert"></p-toast>
+            <p-toast position="bottom-center" key="errorAlert"></p-toast>
+        </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <div class="container">
+            <div class="ng-select-customize">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText class="custom_input" type="text" placeholder="Search customizations"/>
+                </span>
+            </div>
+            <div>
+                <button class="cstmize-create-btn" (click)="addCustomization()">
+                    <div><mat-icon class="cstmize-create-icon">add</mat-icon></div>
+                    <div>Create customization</div>
+                </button>
+                <p-dialog header="Header" [(visible)]="createDialogVisible" [style]="{ width: '35vw', height: '400px'}" [modal]="true" [draggable]="false"
+                [resizable]="false">
+                <ng-template pTemplate="header">
+                    <span class="cstmize-info-header cstmize-info-text-color">Create customizations</span>
+                </ng-template>
+                <form [formGroup]="addCustomizationForm">
+                    <div class="add-cstmize-form">
+                        <div>Create a set of customized options to add to items.</div>
+                        <div class="add-cstmize-spacing">
+                            <div class="field">
+                                <label class="add-cstmize-lbl" for="name">Customer instructions</label>
+                                <input formControlName="CustomizationName" class="add-cstmize-name" type="text" id="name" pInputText>
+                                <label *ngIf="addCustomizationForm.get('CustomizationName')?.touched && addCustomizationForm.get('CustomizationName')?.errors?.['required']" class="validation-message">
+                                    This field is required.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="add-cstmize-spacing">
+                            <div class="field">
+                                <label class="add-cstmize-lbl" for="name">Notes</label>
+                                <input formControlName="Notes" class="add-cstmize-name" placeholder="Enter Notes" type="text" id="name" pInputText>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="menu-content-text-color">Add context or internal names for these options. Notes won't be visible to customers</p>
+                </form>
+                <ng-template pTemplate="footer">
+                    <p-button (click)="returnToCustomization()" label="Cancel" styleClass="p-button-cancel"></p-button>
+                    <p-button (click)="saveCustomization()" label="Save" styleClass="p-button-confrm"></p-button>
+                </ng-template>
+            </p-dialog>
+            </div>
+            <div class="cstmize__container">
+                <div class="cstmize__list" *ngFor="let data of customization" (click)="customizationDetails()">
+                    <div class="cstmize__details">
+                        <div class="cstmize__name">{{data?.name}}</div>
+                        <div class="cstmize__option">{{data?.count}} options</div>
+                        <div class="cstmize__option">{{data?.notes}}</div>
+                    </div>
+                    <div><mat-icon>chevron_right</mat-icon></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </mat-drawer-content> -->
+</mat-drawer-container>

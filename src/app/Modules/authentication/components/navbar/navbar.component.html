@@ -1,0 +1,31 @@
+<mat-toolbar class="navbar__section" 
+[ngClass]="router.url === '/authentication/login' || router.url === '/authentication/signup' || router.url === '/authentication/otp' ? 'navbar__black' : ''" >
+    <!-- <button *ngIf="router.url === '/authentication/main'" mat-icon-button matTooltip="Menu">
+        <mat-icon>menu</mat-icon>
+    </button> -->
+    <div class="logo" routerLink="/authentication/main">
+        <span class="m_food_logo">M Food&nbsp;</span><span>Merchant</span>
+    </div>
+    <span class="toolbar-item-spacer"></span>
+
+    <!-- <button routerLink="/authentication/login" mat-icon-button class="auth__button" matTooltip="Help">
+        <mat-icon>person</mat-icon><span style="margin-left: 10px;">Login</span>
+    </button>
+    <button routerLink="/authentication/signup" mat-icon-button class="auth__button signUp__button" matTooltip="Help">
+        <span>Sign Up</span>
+    </button> -->
+    <span class="toolbar-item-spacer"></span>
+    <button *ngIf="router.url === '/authentication/main'" mat-icon-button class="help__icon" matTooltip="Help" [matMenuTriggerFor]="userAccountMenu">
+        <mat-icon>account_circle</mat-icon><span style="margin-left: 5px;">Account</span>
+    </button>
+    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+        <button mat-menu-item (click)="navigateToSignup()">
+            <mat-icon>person</mat-icon><span>Login</span>
+        </button>
+        <button mat-menu-item routerLink="/authentication/signup" >
+            <mat-icon>person</mat-icon><span>Sign Up</span>
+        </button>
+    </mat-menu>
+
+    
+</mat-toolbar>

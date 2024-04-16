@@ -1,0 +1,111 @@
+.auth__page {
+    position: relative;
+    height: 33.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth__content {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: row;
+    height: 90vh;
+    width: 27%;
+    padding: 0px 10px !important;
+    position: relative;
+
+}
+.auth__content h3{
+    width: 30%;
+    color: var(--primary-orange-color);
+    text-align: center;
+    font-weight: 500;
+    border-left: 2px solid var(--primary-orange-color);
+}
+
+.otp__timer{
+    background-color: var(--secondary-gray-color);
+}
+
+.auth__content h1 {
+    text-align: start;
+    font-size: 23px;
+    width: 100%;
+}
+
+.input__section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.otp__input {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.btn{
+    width: max-content;
+    padding: 8px 10px;
+    background-color: var(--primary-orange-color);
+    color: var(--dark-color);
+    font-size: 14px;
+    color: var(--white-color);
+    border-radius: 6px;
+}
+.btn:hover{
+    transition: 0.1s ease-in;
+    background-color: var(--btn-hover-orange-color);
+}
+
+.back__btn{
+    background-color: var(--secondary-gray-color);
+    border-radius: 10rem;
+    padding: 10px;
+    color: var(--dark-color);
+}
+
+
+.back__btn:hover{
+    transition: 0.1s ease-in;
+    background-color: var(--btn-hover-gray-color);
+}
+.back__arrow{
+    transform: scale(1.5);
+
+}
+
+
+.gray__btn:hover{
+    transition: 0.3s ease-in;
+    background-color: var(--btn-hover-gray-color);
+  
+}
+.otp__timer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.otp__timer h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 4px 10px;
+    font-size: 14px;
+}
+.submit__btn{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

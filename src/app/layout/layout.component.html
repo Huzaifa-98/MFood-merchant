@@ -1,0 +1,91 @@
+<section>
+    <mat-toolbar class="navbar__section">
+        <button mat-icon-button matTooltip="Menu" (click)="sidebarToggle(isOpenSidebar)">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div class="logo" routerLink="/authentication/main">
+    
+            <span class="m_food_logo">M Food&nbsp;</span><span>Merchant</span>
+        </div>
+        <span class="toolbar-item-spacer"></span>
+    
+        <button mat-icon-button class="help__icon" matTooltip="Help">
+            <mat-icon>headset</mat-icon><span style="margin-left: 10px;">Help</span>
+        </button>
+    
+        <button mat-icon-button matTooltip="Notifications">
+            <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+            <button mat-menu-item routerLink="#">
+                <mat-icon>person</mat-icon><span>My Account</span>
+            </button>
+            <button mat-menu-item routerLink="#">
+                <mat-icon>settings</mat-icon><span>Settings</span>
+            </button>
+            <button mat-menu-item routerLink="#">
+                <mat-icon>help</mat-icon><span>Help</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="#">
+                <mat-icon>exit_to_app</mat-icon>Logout
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+    <!-- Dashboard Layout Navbar -->
+    
+    
+    <div class="app-container">
+    
+        <!-- Dashboard Layout Sidebar -->
+    
+        <div class="left" [ngClass]="isOpenSidebar ? 'open' : 'closed'">
+            <div class="left__div" *ngIf="isOpenSidebar" >
+                <div *ngFor="let items of sideBarAttributes; let i = index">
+                    <div class="sidebar__content">
+                        <div class="sidebar__div" (click)="handlePopUp($event.currentTarget)" [id]='items?.idPath'
+                            routerLinkActive="active-link" [routerLink]='items?.routerLinkUrlPath'>
+                            <div class="sidebar__item">
+                                <mat-icon class="sidebar__icons">{{items?.icon}}</mat-icon>
+                                <h1>{{items?.text}}</h1>
+                            </div>
+                            <mat-icon *ngIf="items?.child" class="sidebar__icons__arrow" (click)="toggleMenuList(i)" [ngClass]="{'expanded-icon': isParentVisible[i], 'collapsed-icon': !isParentVisible[i] }"></mat-icon>
+                        </div>
+        
+                        <!-- <div class="side__bar_icon">
+                        </div> -->
+                        
+                        <div *ngIf="items?.child">
+                            <div class="sidebar__popup" [class.expanded]="isParentVisible[i]">
+                                    <div *ngFor="let childItem of items?.child">
+                                    <div class="sidebar__item" routerLinkActive="active-link" [routerLink]="childItem?.routerLinkUrlPath"
+                                        (click)="closePopUp()">
+                                        <h1>{{childItem?.text}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                    
+                </div>
+               
+            </div>
+        </div>
+    
+        <!-- Dashboard Layout Sidebar -->
+    
+    
+        <!-- Dashboard Layout Content -->
+    
+        <div class="right" (click)="closePopUp()">
+            <router-outlet></router-outlet>
+        </div>
+    
+        <!-- Dashboard Layout Content -->
+    
+    </div>
+</section>

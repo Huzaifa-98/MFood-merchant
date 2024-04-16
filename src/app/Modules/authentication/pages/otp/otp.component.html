@@ -1,0 +1,21 @@
+<div class="auth__page">
+    <div class="auth__content">
+        <div>
+            <h3>OTP Screen</h3>
+            <h1>Enter the 4-digit code sent to you at +9232 3122331</h1>
+            <div class="input__section">
+                <div class="otp__input">
+                    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:4}"></ng-otp-input>
+                </div>
+                <div class="otp__timer">
+                    <h2>I didn't recieve a code (0:08)</h2>
+                </div>
+            </div>
+            <div class="submit__btn">
+                <button class="rounded__button btn back__btn"> <mat-icon class="back__arrow">keyboard_arrow_left</mat-icon></button>
+            <button (click)="naviageteTo()" class="rounded__button btn">Next <mat-icon>keyboard_arrow_right</mat-icon></button>
+            </div>
+    
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+
+<!-- <div class="container">
+  <div class="tab_main">
+    <mat-tab-group animationDuration="0ms" class="custom" [(selectedIndex)]="activeTabIndex"
+      (selectedTabChange)="updateActiveLink($event)">
+      <mat-tab *ngFor="let list of navLinks" [label]="list.label">
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="tab_panel">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+<mat-tab-group  animationDuration="0ms" class="custom" [selectedIndex]="activeTabIndex"
+  (selectedTabChange)="updateActiveLink($event)">
+  <mat-tab *ngFor="let list of navLinks" [label]="list.label">
+  </mat-tab>
+</mat-tab-group>
+<router-outlet></router-outlet>
+
+<!-- <div>
+  <router-outlet></router-outlet>
+</div> -->
+
+<!-- <mat-tab-group animationDuration="0ms" class="custom" 
+  [(selectedIndex)]="activeTabIndex"
+  (selectedTabChange)="updateActiveLink($event)">
+  <mat-tab label="Overview">
+    <ng-template matTabContent>
+      <app-overview></app-overview>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Menus">
+    <ng-template matTabContent>
+      <app-menus></app-menus>
+    </ng-template>
+    </mat-tab>
+    <mat-tab label="Categories">
+      <ng-template matTabContent>
+        <app-categories></app-categories>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Items">
+      <ng-template matTabContent>
+        <app-items></app-items>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Customizations">
+      <ng-template matTabContent>
+        <app-customizations></app-customizations>
+      </ng-template>
+    </mat-tab>
+</mat-tab-group> -->
+
+<!-- <mat-tab-group animationDuration="0ms" class="custom" [(selectedIndex)]="activeTabIndex"
+    (selectedTabChange)="updateActiveLink($event)">
+    <mat-tab routerLink="/overview" label="Overview">
+        <app-overview></app-overview>
+    </mat-tab>
+    <mat-tab routerLink="/menus" label="Menus">
+        <app-menus></app-menus>
+    </mat-tab>
+    <mat-tab routerLink="/categories" label="Categories">
+        <app-categories></app-categories>
+    </mat-tab>
+    <mat-tab routerLink="/items" label="Items">
+        <app-items></app-items>
+    </mat-tab>
+    <mat-tab routerLink="/customizations" label="Customizations">
+        <app-customizations></app-customizations>
+    </mat-tab>
+</mat-tab-group> -->
+
+<!-- <mat-tab-group animationDuration="0ms" class="custom" [(selectedIndex)]="activeTabIndex"
+    (selectedTabChange)="updateActiveLink($event)">
+    <mat-tab routerLink="overview" label="Overview">
+        <router-outlet></router-outlet>
+    </mat-tab>
+    <mat-tab routerLink="/menus" label="Menus">
+    </mat-tab>
+    <mat-tab routerLink="/categories" label="Categories">
+    </mat-tab>
+    <mat-tab routerLink="/items" label="Items">
+    </mat-tab>
+    <mat-tab routerLink="/customizations" label="Customizations">
+    </mat-tab>
+    <router-outlet></router-outlet>
+</mat-tab-group> -->
+
+<!-- 
+<mat-tab-group animationDuration="0ms" class="custom" [(selectedIndex)]="activeTabIndex" (selectedTabChange)="updateActiveLink($event)">
+    <a mat-tab-link routerLink="/overview" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+      <mat-tab label="Overview">
+        <app-overview></app-overview>
+      </mat-tab>
+    </a>
+  
+    <a mat-tab-link routerLink="/menus" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">
+      <mat-tab label="Menus">
+        <app-menus></app-menus>
+      </mat-tab>
+    </a>
+  
+    <a mat-tab-link routerLink="/categories" routerLinkActive #rla3="routerLinkActive" [active]="rla3.isActive">
+      <mat-tab label="Categories">
+        <app-categories></app-categories>
+      </mat-tab>
+    </a>
+  
+    <a mat-tab-link routerLink="/items" routerLinkActive #rla4="routerLinkActive" [active]="rla4.isActive">
+      <mat-tab label="Items">
+        <app-items></app-items>
+      </mat-tab>
+    </a>
+  
+    <a mat-tab-link routerLink="/customizations" routerLinkActive #rla5="routerLinkActive" [active]="rla5.isActive">
+      <mat-tab label="Customizations">
+        <app-customizations></app-customizations>
+      </mat-tab>
+    </a>
+  </mat-tab-group> -->
+
+
+
+<!-- <div class="tab-groups-container">
+    <mat-tab-group mat-stretch-tabs="false" class="custom-tab-group">
+        <mat-tab label="See Changes">
+            <app-categories></app-categories>
+        </mat-tab>
+        <mat-tab label="View Online">
+            <app-items></app-items>
+        </mat-tab>
+        <mat-tab label="About">
+            <app-customizations></app-customizations>
+        </mat-tab>
+    </mat-tab-group>
+</div> -->

@@ -1,0 +1,38 @@
+.users__container{
+    padding: 40px 50px;
+}
+
+.users__container__table{
+    padding: 0px 50px;
+}
+.users__div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.users__div h1{
+    margin: 0px;
+    font-weight: 600;
+    font-size: 35px;
+}
+.users__div button{
+    width: 15%;
+}
+
+.modal__input__fields {
+    width: 100%;
+    margin-top: 20px;
+
+}
+
+.modal__input__name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+
+
+/* // Input Button //
+
+/* // Modal Section */

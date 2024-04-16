@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="orders_div">
+        <h1>Orders</h1>
+        <p>Review your orders in real time. For detailed view of your pay, go to Payouts by order.</p>
+    </div>
+    <p-tabView>
+        <p-tabPanel header="All">
+            <ng-template pTemplate="content">
+                <p-table #dt1 [value]="ordersAll" dataKey="id" [tableStyle]="{'min-width': '60rem'}"
+                    [globalFilterFields]="['itemName','menuName', 'categoryName']">
+                    <ng-template pTemplate="caption">
+                        <div class="orderdiv__flex">
+                            <div class="orderdate__div">
+                                <p-calendar styleClass="calendar-datepicker" selectionMode="range" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" inputId="min-max" placeholder="Select Range"></p-calendar>
+                            </div>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                                    placeholder="Search keyword" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width:10%">Photo</th>
+                            <th pSortableColumn="itemName" style="width:13%">Name <p-sortIcon field="itemName"></p-sortIcon></th>
+                            <th style="width:10%">Price</th>
+                            <th style="width:13%">Menus</th>
+                            <th style="width:13%">Categories</th>
+                            <th style="width:12%">Used In</th>
+                            <th style="width:12%">Contains</th>
+                            <th pSortableColumn="lastUpdate" style="width:20%">Last Updated <p-sortIcon field="lastUpdate"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-desc>
+                        <tr>
+                            <td><p-avatar [image]="desc?.menuImage" shape="sqaure" size="medium"></p-avatar></td>
+                            <td>{{desc?.itemName}}</td>
+                            <td>{{desc?.baseAmount}}</td>
+                            <td>{{desc?.menuName}}</td>
+                            <td>{{desc?.categoryName}}</td>
+                            <td>{{desc?.usedIn || '-'}}</td>
+                            <td>{{desc?.containss || '-'}}</td>
+                            <td>{{desc?.lastUpdate || '-'}}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="8">No orders found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Unfulfilled">
+            <ng-template pTemplate="content">
+                <div class="orderdiv__flex">
+                    <div class="orderdate__div">
+                        <p-calendar styleClass="calendar-datepicker" selectionMode="range" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" inputId="min-max" placeholder="Select Range"></p-calendar>
+                    </div>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" placeholder="Search keyword" />
+                    </span>
+                </div>
+                <div class="unfulfilled__orders">
+                    <div class="unfulfilled__count">0 order(s) unfulfilled by your store <span class="unfulfilled__icon" pTooltip="Last updated: Mar 11, 2024, 1:51 PM
+                        Customer refunds and order issue states for some orders have not been fully updated yet." tooltipPosition="bottom" [hideDelay]="500"><i class="pi pi-exclamation-circle"></i></span></div>
+                    <div class="unfulfilled__msg">Send a message to customers whose orders you missed or canceled to show them you care.</div>
+                </div>
+            </ng-template>
+        </p-tabPanel>
+    </p-tabView>
+</div>

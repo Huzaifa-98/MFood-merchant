@@ -1,0 +1,135 @@
+<div  *ngIf="!isLoading"  class="campaign__container">
+    <div class="caraousel" >
+        <p-carousel [value]="carouselItems" [numVisible]="1" [numScroll]="1" [circular]="true"
+            [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
+            <ng-template let-item pTemplate="item">
+                <div class="carousel__container">
+                    <div class="carousel__left">
+                        <h1>Put your store in the spotlight</h1>
+                        <p>Ads let you advertise your store and reach more customers.
+                            Start a campaign now to boost your store in the Uber Eats feed.</p>
+                        <button class="rounded__button learn__btn btn ">Learn More</button>
+                    </div>
+
+                    <div class="carousel__right">
+                        <img src="../../../../assets/order_svg.svg" />
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    <div class="campaign__title">
+        <h1>Choose a goal for your campaign</h1>
+        <p>Suggestions are provided based on performance goals and to highlight the availability of offers and
+            ads tools on Uber Eats. Where shown, projected sales, order increase percentages, and other outcomes
+            are not guaranteed and actual results may vary. </p>
+    </div>
+
+    <div class="campaign__card__container">
+        <div class="campaign__card">
+            <div class="campaign__card__top">
+                <img src="../../../../assets/order_svg.svg" />
+                <h3>Get More Orders</h3>
+                <p>Encourage orders by creating promotion or ads</p>
+            </div>
+
+            <div class="campaign__card__bottom">
+                <h2>Suggested for you</h2>
+                <div class="campaign__card__inner">
+                    <div class="campaign__card__content">
+                        <h3>Buy 1, Get 1 Free</h3>
+                        <h5>Up to 39% more orders</h5>
+                    </div>
+                    <div>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            <div class="campaign__card__bottom">
+                <div class="campaign__card__inner" >
+                    <div class="campaign__card__content" >
+                        <h3 class="link__hover"  (click)="navigateToGoal()" >More options</h3>
+                    </div>
+                    <div>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="campaign__card">
+            <div class="campaign__card__top">
+                <img src="../../../../assets/order_svg.svg" />
+                <h3>Get More Orders</h3>
+                <p>Encourage orders by creating promotion or ads</p>
+            </div>
+
+            <div class="campaign__card__bottom">
+                <h2>Suggested for you</h2>
+                <div class="campaign__card__inner">
+                    <div class="campaign__card__content">
+                        <h3>Buy 1, Get 1 Free</h3>
+                        <h5>Up to 39% more orders</h5>
+                    </div>
+                    <div>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            <div class="campaign__card__bottom">
+                <div class="campaign__card__inner" >
+                    <div class="campaign__card__content" >
+                        <h3 class="link__hover" (click)="navigateToGoal()" >More options</h3>
+                    </div>
+                    <div>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="campaign__card">
+            <div class="campaign__card__top">
+                <img src="../../../../assets/order_svg.svg" />
+                <h3>Get More Orders</h3>
+                <p>Encourage orders by creating promotion or ads</p>
+            </div>
+
+            <div class="campaign__card__bottom">
+                <h2>Suggested for you</h2>
+                <div class="campaign__card__inner">
+                    <div class="campaign__card__content">
+                        <h3>Buy 1, Get 1 Free</h3>
+                        <h5>Up to 39% more orders</h5>
+                    </div>
+                    <div>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            <div class="campaign__card__bottom">
+                <div class="campaign__card__inner" >
+                    <div class="campaign__card__content" >
+                        <h3 class="link__hover" (click)="navigateToGoal()" >More options</h3>
+                    </div>
+                    <div>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
+
+<div class="loader__icon" *ngIf="isLoading">
+    <img src="../../../../../assets/loader.gif"/>
+</div>

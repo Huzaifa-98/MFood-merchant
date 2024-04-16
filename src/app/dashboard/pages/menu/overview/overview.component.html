@@ -1,0 +1,366 @@
+<!-- Loader Animation  -->
+<ng-template #loader>
+    <div class="loader">
+      <img src="../../../../../assets/food-loader-2.gif" />
+    </div>
+  
+</ng-template>
+  <!-- Loader Animation  -->
+<mat-drawer-container *ngIf="!isLoading; else loader" class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+        <!-- Content of your drawer goes here -->
+        <div [ngSwitch]="sideNavId">
+            <div *ngSwitchCase="1">
+                <form [formGroup]="addItemForm">
+                    <div class="add-ctg-hdr">
+                        <div class="add-ctg-hdr-align">
+                            <button mat-icon-button (click)="closedrawer()"><mat-icon>close</mat-icon></button>
+                            <div class="add-ctg-heading" *ngIf="addItemLblAndBtn">Add item</div>
+                            <div class="add-ctg-heading" *ngIf="editItemLblAndBtn">Edit item</div>
+                        </div>
+                        <button class="add-ctg-hdr-btn" *ngIf="addItemLblAndBtn" (click)="saveAddItem()">Save</button>
+                        <button class="add-ctg-hdr-btn" *ngIf="editItemLblAndBtn" (click)="updateItem()">Update</button>
+                    </div>
+                    <div class="add-ctg-form">
+                        <div class="add-ctg-spacing">
+                            <div class="field">
+                                <label class="add-ctg-lbl" for="name">Name<span class="add_item_mark">*</span></label>
+                                <input formControlName="ItemName" class="add-ctg-name" type="text" id="name" pInputText>
+                                <label *ngIf="addItemForm.get('ItemName')?.touched && addItemForm.get('ItemName')?.errors?.['required']" class="validation-message">
+                                    This field is required.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <div class="field">
+                                <label class="add-item-lbl">Photo</label>
+                                <div class="custom-file-input">
+                                    <img class="img_custom" *ngIf="image" [src]="image" alt="Uploaded Image">
+                                    <input class="img_input" type="file" (change)="onUpload($event)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <div class="field">
+                                <label class="add-ctg-lbl" for="addCategory">Categories</label>
+                                <p-multiSelect formControlName="Categories" class="add-ctg-menu" inputId="addCategory" [options]="category" optionLabel="categoryName" optionValue="categoryId" [filter]="false" placeholder="Add a Category"></p-multiSelect>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <div class="add_ctg_remarks">
+                                <label class="add-ctg-lbl" for="textarea">Notes<span>(only visible to you)</span></label>
+                                <textarea formControlName="Notes" class="add-ctg-notes" inputId="textarea" rows="2"
+                                    cols="45" placeholder="Enter Notes" [autoResize]="true"
+                                    pInputTextarea></textarea>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <div class="add_ctg_remarks">
+                                <label class="add-ctg-lbl" for="textareaDesc">Description<span>(optional)</span></label>
+                                <textarea formControlName="Description" class="add-ctg-notes" inputId="textareaDesc" rows="4"
+                                    cols="45" placeholder="Enter Description" [autoResize]="true"
+                                    pInputTextarea></textarea>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <div class="field">
+                                <label class="add-item-lbl" for="addCategory">Price</label>
+                                <div>
+                                    <p-inputNumber formControlName="Price" mode="decimal" placeholder="Item Price"></p-inputNumber>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <button class="add-ctg-btn" *ngIf="addItemLblAndBtn" (click)="saveAddItem()">Save</button>
+                            <button class="add-ctg-btn" *ngIf="editItemLblAndBtn" (click)="updateItem()">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div *ngSwitchCase="2">
+                <form [formGroup]="addCtgryForm">
+                    <div class="add-ctg-hdr">
+                        <div class="add-ctg-hdr-align">
+                            <button mat-icon-button (click)="drawer.close()"><mat-icon>close</mat-icon></button>
+                            <div class="add-ctg-heading" *ngIf="addCtgryLblAndBtn">Add category</div>
+                            <div class="add-ctg-heading" *ngIf="editCtgryLblAndBtn">Edit category</div>
+                        </div>
+                        <button class="add-ctg-hdr-btn" *ngIf="addCtgryLblAndBtn" (click)="saveAddCategory()">Save</button>
+                        <button class="add-ctg-hdr-btn" *ngIf="editCtgryLblAndBtn" (click)="updateCategory()">Update</button>
+                    </div>
+                    <div class="add-ctg-form">
+                        <div class="add-ctg-spacing">
+                            <div class="field">
+                                <label class="add-ctg-lbl" for="name">Name</label>
+                                <input formControlName="CategoryName" class="add-ctg-name" type="text" id="name" pInputText>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <div class="field">
+                                <label class="add-ctg-lbl" for="addMenu">Menus</label>
+                                <p-multiSelect formControlName="Menus" class="add-ctg-menu" inputId="addMenu"
+                                    [options]="menus" optionLabel="name"
+                                    optionValue="menuId" [filter]="false" placeholder="Add Menu"></p-multiSelect>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <div class="add_ctg_remarks">
+                                <label class="add-ctg-lbl" for="textarea">Notes<span>(only visible to
+                                        you)</span></label>
+                                <textarea formControlName="Remarks" class="add-ctg-notes" inputId="textarea" rows="2"
+                                    cols="45" placeholder="Enter Notes" [autoResize]="true"
+                                    pInputTextarea></textarea>
+                            </div>
+                        </div>
+                        <div class="add-ctg-spacing">
+                            <button class="add-ctg-btn" *ngIf="addCtgryLblAndBtn" (click)="saveAddCategory()">Save</button>
+                            <button class="add-ctg-btn" *ngIf="editCtgryLblAndBtn" (click)="updateCategory()">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div *ngSwitchCase="3">
+                <div class="cstmize__maindiv">
+                    <div class="cstmize__btnIcons">
+                        <button mat-icon-button (click)="drawer.close()"><mat-icon>close</mat-icon></button>
+                        <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+                    </div>
+                    <div class="cstmize__namediv">
+                        <div class="cstmize__heading">Customizations</div>
+                        <div class="cstmize__body">
+                            <div>
+                                <div class="cstmize__bodydetails">Customer instructions</div>
+                                <div class="cstmize__bodyoptions">Choose your drink</div>
+                            </div>
+                            <div><button mat-icon-button class="cstm__editbtn"><mat-icon class="custom__icon">border_color</mat-icon></button></div>
+                        </div>
+                        <div class="cstmize__bodynotes">
+                            <div class="cstmize__bodydetails">Notes</div>
+                            <div class="cstmize__bodyoptions">Enter Notes</div>
+                        </div>
+                    </div>
+                    <div class="cstmize__line"></div>
+                </div>
+                <p-dialog header="Header" [(visible)]="createDialogVisible" [style]="{ width: '35vw', height: '400px'}" [modal]="true"
+                    [draggable]="false" [resizable]="false">
+                    <ng-template pTemplate="header">
+                        <span class="cstmize-info-header cstmize-info-text-color">Create customizations</span>
+                    </ng-template>
+                    <form [formGroup]="addCustomizationForm">
+                        <div class="add-cstmize-form">
+                            <div>Create a set of customized options to add to items.</div>
+                            <div class="add-cstmize-spacing">
+                                <div class="field">
+                                    <label class="add-cstmize-lbl" for="name">Customer instructions</label>
+                                    <input formControlName="CustomizationName" class="add-cstmize-name" type="text" id="name"
+                                        pInputText>
+                                    <label
+                                        *ngIf="addCustomizationForm.get('CustomizationName')?.touched && addCustomizationForm.get('CustomizationName')?.errors?.['required']"
+                                        class="validation-message">
+                                        This field is required.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="add-cstmize-spacing">
+                                <div class="field">
+                                    <label class="add-cstmize-lbl" for="name">Notes</label>
+                                    <input formControlName="Notes" class="add-cstmize-name" placeholder="Enter Notes" type="text"
+                                        id="name" pInputText>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="menu-content-text-color">Add context or internal names for these options. Notes won't be visible to
+                            customers</p>
+                    </form>
+                    <ng-template pTemplate="footer">
+                        <p-button (click)="returnToCustomization()" label="Cancel" styleClass="p-button-cancel"></p-button>
+                        <p-button (click)="saveCustomization()" label="Save" styleClass="p-button-confrm"></p-button>
+                    </ng-template>
+                </p-dialog>
+            </div>
+            <p-toast position="bottom-center" key="saveAlert"></p-toast>
+            <p-toast position="bottom-center" key="errorAlert"></p-toast>
+        </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <div class="container">
+            <div class="overview-card" *ngIf="isCardVisible">
+                <div class="overview-flex-item">
+                    <h2 class="overview-heading">Photos of menu items can increase sales</h2>
+                    <p class="overview-text">
+                        They help customers choose what to order. To add photos, go to Items and choose a menu item.
+                    </p>
+                    <button class="overview-btn" (click)="routeToItems()">Add Photo</button>
+                </div>
+
+                <div class="overview-flex-enditem">
+                    <img src="../../../../../assets/fast-food.png" alt="">
+                    <button class="overview-btn-hide" (click)="hideCard()">
+                        <p-avatar icon="pi pi-times" styleClass="mr-2"
+                            [style]="{ 'background-color': 'rgb(255, 246, 233)' }"></p-avatar>
+                    </button>
+                </div>
+
+
+            </div>
+
+            <div class="overview-second-card">
+                <div class="overview-second-card-sub">
+                    <div>
+                        <mat-icon>info</mat-icon>
+                    </div>
+                    <div class="algn-item-start">
+                        <p class="overview-second-heading">Make sure your menu looks correct</p>
+                        <p class="overview-second-text">You can make updates on your own or contact support for help.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <button class="overview-second-btn" (click)="showDialog()">View tips</button>
+                    <p-dialog header="Header" [(visible)]="infoDialogVisible" [style]="{ width: '35vw' }" [modal]="true"
+                        [draggable]="false" [resizable]="false">
+                        <ng-template pTemplate="header">
+                            <span class="menu-info-header menu-info-text-color">Review your menu</span>
+                        </ng-template>
+                        <p class="menu-info-text-color">Make sure that:</p>
+                        <div class="menu-info-desc">
+                            <mat-icon class="menu-info-icons"> restaurant</mat-icon>
+                            <div>All items are listed, including beverages</div>
+                        </div>
+                        <div class="menu-info-desc">
+                            <mat-icon class="menu-info-icons"> attach_money</mat-icon>
+                            <div>All items have prices</div>
+                        </div>
+                        <div class="menu-info-desc">
+                            <mat-icon class="menu-info-icons"> format_list_bulleted</mat-icon>
+                            <div>Item names and descriptions are accurate</div>
+                        </div>
+                        <div class="menu-info-desc">
+                            <mat-icon class="menu-info-icons">edit</mat-icon>
+                            <div>Modifier groups are applied to the right items</div>
+                        </div>
+                        <div class="menu-info-desc">
+                            <mat-icon class="menu-info-icons">date_range</mat-icon>
+                            <div>Menu hours are correct</div>
+                        </div>
+                        <ng-template pTemplate="footer">
+                            <p-button (click)="infoDialogVisible = false" label="Done"
+                                styleClass="p-button-text"></p-button>
+                        </ng-template>
+                    </p-dialog>
+                </div>
+            </div>
+
+            <div class="overview-menu-section">
+                <div class="overview-menu-subitem">
+                    <p class="overview-menu-heading">{{selectedMenuName}}</p>
+                    <div class="overview-menulist">
+                        <button class="overview-menu-btn" [matMenuTriggerFor]="menu">
+                            <mat-icon class="icon-display">expand_more</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" [class.menu-open]="showMenuOptions">
+                            <button mat-menu-item *ngFor="let menu of menus"
+                                (click)="getSelectedMenuName(menu.menuId,menu.name)">
+                                {{ menu.name }}
+                            </button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-menu-subtext">
+                <div>
+                    <div class="menu-hours">Menu Hours</div>
+                    <div class="menu-color" *ngFor="let desc of menuTimings">{{desc.menuDaysHrs}}</div>
+                </div>
+                <div>
+                    <button class="menu-edit-btn" (click)="routeToEditMenu()">
+                        <div><mat-icon class="menu-edit-icon">settings</mat-icon></div>
+                        <div>Edit</div>
+                    </button>
+                </div>
+            </div>
+            <div class="overview-menu-options">
+                <div class="ng-select-customize">
+                    <!-- <mat-icon class="mat-icon-search">search</mat-icon> -->
+                    <!-- <p-multiSelect class="primeng__custom_select" [options]="menuItem" [(ngModel)]="selectedMenuCategory" optionLabel="categoryName" optionValue="categoryId" placeholder="Search category"></p-multiSelect> -->
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText class="custom_input" type="text" 
+                            [placeholder]="itemCountPlaceholder()" [(ngModel)]="searchTerm"/>
+                    </span>
+                </div>
+
+                <button class="menu-edit-btn" [title]="allMenuListToggle ? 'Expand All' : 'Collapse All'">
+                    <div><mat-icon class="mat-exp-coll-icon" (click)="toggleAllMenuList()"
+                            [ngClass]="{'menu-expand-icon': allMenuListToggle, 'menu-collapse-icon': !allMenuListToggle }"></mat-icon>
+                    </div>
+                </button>
+                <button class="menu-edit-btn" [matMenuTriggerFor]="add">
+                    <div><mat-icon class="mat-icon-expand-search">add</mat-icon></div>
+                    <div>Add</div>
+                </button>
+                <mat-menu #add="matMenu" [class.menu-open]="showMenuOptions" xPosition="before">
+                    <button mat-menu-item *ngFor="let options of addOptions" (click)="showAddOptionNavbar(options.id)">
+                        {{ options.Name }}
+                    </button>
+                </mat-menu>
+                <button class="menu-edit-btn" disabled="disabled">Save</button>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                <ng-container *ngFor="let item of filteredMenuItems(); let i = index">
+                    <div class="overview-menu-items example-box" cdkDrag>
+                        <mat-icon class="menu-drag-icon" cdkDragHandle>menu</mat-icon>
+                        <div class="menu-items-desc" (click)="editCategory(item.categoryId, 2)">
+                            <div class="menu-item-name">{{item.categoryName}}</div>
+                            <div class="menu-item-total">{{item.itemCount}} items</div>
+                        </div>
+                        <mat-icon (click)="toggleMenuList(i)"
+                            [ngClass]="{'expanded-icon': isParentVisible[i], 'collapsed-icon': !isParentVisible[i] }">
+                        </mat-icon>
+                    </div>
+                    <div class="menu-subitems" [ngClass]="{'menu-subitems-expanded': isParentVisible[i], 'is-open': isOpen}">
+                        <div class="overview-submenu-items" *ngFor="let subItem of item.menuListCategoryItems">
+                            <mat-icon class="submenu-list-icon">menu</mat-icon>
+                            <p-avatar [image]="subItem?.image" shape="sqaure" size="large"></p-avatar>
+                            <div class="menu-subitems-desc" (click)="editItem(subItem.id, 1)">
+                                <div class="menu-subitem-name">{{subItem.name}}</div>
+                            </div>
+                            <div class="menu-item-price">
+                                <div class="p-inputgroup">
+                                    <span class="p-inputgroup-addon">$</span>
+                                    <input type="text" pInputText placeholder="0.00" [value]="subItem.amount" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-add-item">
+                            <button class="menu-edit-btn" (click)="addSelectedCtgryItem(item.categoryId, 1)">
+                                <div><mat-icon class="mat-icon-expand-search">add</mat-icon></div>
+                                <div>Add item</div>
+                            </button>
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="overview-menu-items">
+                    <mat-icon>visibility_off</mat-icon>
+                    <div class="menu-items-desc">
+                        <div class="menu-item-name">Uncategorized</div>
+                        <div class="menu-item-total">Hidden from customers</div>
+                        <div class="menu-item-total">0 items</div>
+                    </div>
+                    <mat-icon (click)="toggleUncategorizedList()"
+                        [ngClass]="{'expanded-icon': UncategorizedListToggle, 'collapsed-icon': !UncategorizedListToggle }">
+                    </mat-icon>
+                </div>
+                <div class="menu-add-item" *ngIf="UncategorizedListToggle">
+                    <button class="menu-edit-btn">
+                        <div><mat-icon class="mat-icon-expand-search">add</mat-icon></div>
+                        <div>Add item</div>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- </mat-drawer-content> -->
+</mat-drawer-container>

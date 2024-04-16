@@ -1,0 +1,137 @@
+.campaign__container {
+    padding: 30px 0px;
+}
+
+.carousel__container {
+    background-color: rgb(255, 242, 217);
+    padding: 30px;
+    min-height: max-content;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.carousel__left h1 {
+    font-weight: 600;
+}
+
+.carousel__right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel__right img {
+    width: 150px;
+}
+
+.learn__btn {
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.campaign__title {
+    padding: 0px 45px;
+}
+
+.campaign__title h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.campaign__title p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.campaign__card__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.campaign__card {
+    width: 250px;
+    min-height: max-content;
+    background-color: white;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.campaign__card__top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.campaign__card__top img {
+    width: 25%;
+}
+
+.campaign__card__top h3 {
+    margin: 0px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.campaign__card__top p {
+    font-size: 12px;
+}
+
+.campaign__card__bottom {
+    cursor: pointer;
+}
+
+.campaign__card__bottom h2 {
+    margin: 0px;
+    font-size: 10px;
+    color: var(--btn-hover-dary-gray-color);
+
+}
+
+.campaign__card__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.campaign__card__content h3 {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+.campaign__card__content h5 {
+    margin: 0px;
+
+}
+
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.campaign__card:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+.link__hover:hover{
+    color: var(--btn-hover-gray-color);
+}
+
+::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+    background-color: var(--primary-orange-color) !important;
+}

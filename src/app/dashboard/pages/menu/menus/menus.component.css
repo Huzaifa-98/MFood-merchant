@@ -1,0 +1,408 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.menus_div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menus_div h4{
+  font-size: 28px;
+  font-weight: 700;
+  margin: 38px 0;
+}
+
+.menus_div button{
+  width: 15%;
+}
+
+::ng-deep.p-datatable table{
+  font-size: 14px;
+}
+
+::ng-deep.p-datatable .p-datatable-header {
+  background: transparent;
+  color: #343a40;
+  border: none;
+  border-width: 1px 0 1px 0;
+  padding: 1rem 1rem;
+  font-weight: 700;
+}
+
+::ng-deep.p-datatable .p-datatable-thead > tr > th {
+  text-align: left;
+  padding: 1rem 1rem;
+  border: 1px solid #dee2e6;
+  border-width: 0 0 1px 0;
+  font-weight: 700;
+  color: #343a40;
+  background: transparent;
+  transition: box-shadow 0.2s;
+}
+
+::ng-deep.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: transparent;
+  color: #343a40;
+}
+
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem #000000;
+  border-color: transparent;
+}
+
+.p-inputtext:enabled:hover {
+  border-color: transparent;
+}
+
+.p-inputtext {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  color: #495057;
+  background: #eeeeee;
+  padding: 0.5rem 3.75rem;
+  border: 1px solid #eeeeee;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 6px;
+}
+
+
+
+::ng-deep.p-datatable .p-sortable-column.p-highlight {
+  background: transparent;
+  color: #f16b2a;
+}
+::ng-deep.p-datatable .p-sortable-column.p-highlight:hover {
+  background: transparent;
+  color: #f16b2a;
+}
+
+::ng-deep.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+  color: #f16b2a;
+}
+
+::ng-deep.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: #f16b2a;
+}
+
+::ng-deep.p-datatable .p-sortable-column:focus {
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.menu__name__link{
+  text-decoration: none;
+  color: #f16b2a;
+  cursor: pointer;
+}
+
+.addMenu_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom_addMenu_row {
+  cursor: pointer;
+}
+
+.addMenu_btns {
+  display: flex;
+  column-gap: 10px;
+}
+
+
+.newMenu__field {
+  width: 100%;
+}
+
+.addMenuName__field {
+  width: 100%;
+  margin-top: 30px;
+  position: relative;
+}
+
+.addMenuName__field i {
+  position: absolute;
+  top: 25%;
+  right: 2%;
+  font-size: 14px;
+  color: #43a422;
+  cursor: pointer;
+}
+
+.addMenuName__field .addMenu__Nameinput {
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 90px;
+  background-color: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+.addMenu__Nameinput_Active{
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 90px;
+  background-color: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 1px solid red;
+}
+
+.addMenu__Nameinput_Active:enabled:hover {
+  border-bottom: 1px solid red;
+}
+
+.addMenu__Nameinput_Active:enabled:focus {
+  box-shadow: none;
+  border-bottom: 1px solid red;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+.addMenu__Nameinput:enabled:hover {
+  border-color: #eeeeee;
+}
+
+.addMenu__Nameinput:enabled:focus {
+  box-shadow: none;
+  border-color: #000000;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+.menuName-validation-message {
+  font-size: 12px;
+  color: red;
+  margin-top: 5px;
+}
+
+.addMenu__remarks {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0 0 0;
+}
+
+.addMenu__Remarksinput {
+  padding-left: 12px;
+}
+
+.addMenu__remarksLbl {
+  color: #6b6b6b;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.addMenuSlot_lbl {
+  padding: 30px 0;
+}
+
+.menu_lbl {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.addMenu_timings_div{
+  margin-top: 20px;
+}
+
+.addMenu_timeSlot{
+  padding: 5px 10px 10px 20px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  border: 2px solid rgb(224, 224, 224);
+  width: 800px;
+}
+
+.addMenuChk__Custom{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.menuTimings__dropdown{
+  display: flex;
+  flex-direction: row;
+}
+
+.align__menuTimings{
+  display: flex;
+  flex-direction: column;
+  padding: 15px 15px 25px 0px;
+}
+
+.menuTime__lbl{
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+::ng-deep.p-dropdown{
+  width: 250px;
+}
+
+.menu_select_options{
+  margin-top: 25px;
+}
+
+.menu-info-header {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.menu-info-text-color {
+  color: #000000;
+}
+
+.menu-content-text-color {
+  color: #757575;
+}
+
+::ng-deep.p-button.p-button-confrm {
+  background: var(--primary-orange-color);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-confrm:enabled:hover {
+  background: var(--btn-hover-orange-color);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-cancel {
+  background: transparent;
+  color: #000000;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-cancel:enabled:hover {
+  background: var(--btn-hover-gray-color);
+  color: #000000;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-delete {
+  background: var(--red-500);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-delete:enabled:hover {
+  background: var(--red-700);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.container_spacing{
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+.menuDays__div{
+  margin-top: 10px;
+}
+
+
+::ng-deep.p-selectbutton .p-button.p-highlight {
+  background: #f16b2a;
+  border-color: #f16b2a;
+  color: #ffffff;
+}
+
+::ng-deep.p-selectbutton .p-button.p-highlight:hover {
+  background: #f16b2a;
+  border-color: #f16b2a;
+  color: #ffffff;
+}
+
+::ng-deep.p-button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #f16b2a, 0 1px 2px 0 black;
+}
+
+.addMenuDaysTime_lbl{
+  font-size: 14px;
+  font-weight: 500;
+  color:#43a422;
+  cursor: pointer;
+}
+
+.menuAddDiv_hide {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menuAddDiv_hide:hover{
+  background-color: #DEE2E6;
+}
+
+.removeicon_div{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menuTimings__chart{
+  margin-top: 10px;
+  overflow-x: auto;
+}
+
+.menuTimings__chart::-webkit-scrollbar {
+  height: 10px;
+}
+
+.menuTimings__chart::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Radius of the scrollbar thumb */
+}
+
+.menuTimings__chart::-webkit-scrollbar-track {
+  background-color: #f2f2f2; /* Color of the scrollbar track */
+}
+
+.cell {
+  border: 1px solid #ccc;
+  border-top: none;
+  border-bottom: none;
+  min-height: 20px;
+  background-color: #f2f2f2;
+}
+
+.scheduler-chart {
+  display: grid;
+  grid-template-columns: 65px repeat(11, 1fr);
+  white-space: nowrap;
+}
+
+.timings {
+  display: grid;
+  grid-template-rows: 30px
+}
+
+.cell.orange {
+  background-color: #f16b2a;
+  color: #fff;
+}
+
+.time-header {
+  font-size: 12px;
+  border: none;
+  padding: 0 5px 10px 0;
+  text-align: center;
+}

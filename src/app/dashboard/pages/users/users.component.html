@@ -1,0 +1,15 @@
+<div class="users__container">
+    <div class="users__div">
+        <h1>Users</h1>
+        <button class="rounded__button btn " (click)="showDialog()"><mat-icon>add</mat-icon> Add User</button>
+    </div>
+</div>
+
+
+<app-users-upsert [visible]="visible" (handleDialogVisible)="handleDialog()"></app-users-upsert>
+
+<div  class="users__container__table">
+    <app-users-table></app-users-table>
+</div>
+
+<p-toast></p-toast>

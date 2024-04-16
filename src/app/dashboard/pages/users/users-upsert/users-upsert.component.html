@@ -1,0 +1,48 @@
+<div>
+    <p-dialog (onHide)="hideDialog()" header='User Details' [(visible)]="visible" [modal]="true"
+        [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+        <div class="modal__section">
+            <form [formGroup]="userForm" (ngSubmit)="createUserForm()">
+                <div class="modal__input__fields">
+                    <div class="modal__input__name">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>First Name</mat-label>
+                            <input formControlName="FirstName" type="text" matInput placeholder="Enter first name">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Last Name</mat-label>
+                            <input formControlName="LastName" type="text" matInput placeholder="Enter last name">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="modal__input__name">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input formControlName="Email" type="email" matInput placeholder="Ex. pat@example.com">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="modal__input__name">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Phone Number</mat-label>
+                            <input formControlName="Phone1" type="text" matInput placeholder="Ex. 03202317780">
+                        </mat-form-field>
+                    </div>
+
+                    <button *ngIf="!isUserUpdateBtn"
+                        [ngClass]="userForm.invalid ? 'button__disabled' : 'button__enabled' "
+                        [disabled]="userForm.invalid" class="rounded__button btn add__btn">
+                        Add</button>
+
+                    <button *ngIf="isUserUpdateBtn"
+                        [ngClass]="userForm.invalid ? 'button__disabled' : 'button__enabled' "
+                        [disabled]="userForm.invalid" class="rounded__button btn add__btn">
+                        Update</button>
+
+                </div>
+            </form>
+
+        </div>
+    </p-dialog>
+</div>

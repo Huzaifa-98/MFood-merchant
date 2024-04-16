@@ -1,0 +1,7 @@
+<mat-tab-group [(selectedIndex)]="activeTabIndex" [headerPosition]="'above'" (selectedTabChange)="updateActiveLink($event)">
+    <mat-tab label="CreateCampaign">
+        <app-create-campaign></app-create-campaign>
+    </mat-tab>
+    <mat-tab label="performance"> performance </mat-tab>
+    <mat-tab label="Campaigns"> Campaigns </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,121 @@
+.goal__container{
+    padding: 25px 45px;
+}
+.back__btn{
+    width: 100%;
+    height: 20px;
+}
+.goal__top{
+margin-top: 40px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+}
+.goal__top h1{
+    font-size: 34px;
+    margin: 0px;
+    margin-bottom: 10px;
+    font-weight: 600;
+
+}
+
+.goal__right img{
+    width: 50px;
+}
+.goal__promotion__section{
+    margin-top: 40px;
+}
+.goal__promotion__title h2{
+    margin: 0px;
+    font-size: 15px;
+}
+.goal__promotion__title h3{
+    margin: 0px;
+    font-size: 13px;
+}
+.goal__promotion__card{
+    width: 100%;
+    min-height: max-content;
+    background-color: white;
+    /* margin: 15px; */
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.goal__promotion__left{
+    background-color: aliceblue;
+    height: 100%;
+    width: 40%;
+}
+.goal__promotion__right{
+    width: 60%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.goal__promotion__right h2{
+    margin: 0px;
+    font-size: 17px;
+    font-weight: 500;
+}
+.goal__promotion__right h6{
+    margin: 0px;
+    font-size: 10px;
+    color: green;
+}
+.goal__promotion__right h3{
+    margin: 0px;
+    font-size: 14px;
+}
+.promo__btn{
+    width: 30%;
+    padding: 7px 5px;
+    color: var(--white-color);
+    border-radius: 5px;
+    margin-top: 25px;
+
+}
+.goal__explore__section{
+    margin-top: 40px;
+}
+.goal__explore__section h1{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0px;
+}
+.goal__explore__div{
+    display: flex;
+    align-items: center;
+    justify-content: space;
+    flex-direction: wrap;
+}
+.goal__explore__card{
+    min-height: max-content;
+    height: 290px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin: 12px;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+}
+.goal__explore__card:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+.goal__explore__card img{
+    width: 70px;
+}
+.goal__explore__card h2{
+    margin: 0px;
+}
+.goal__explore__card h3{
+    margin: 0px;
+    font-size: 14px;
+}

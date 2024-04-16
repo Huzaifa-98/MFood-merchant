@@ -1,0 +1,89 @@
+<div class="user__section" *ngIf="!isLoading; else loader">
+
+  <!-- Search Input  -->  
+  <div class="search__input">
+    <div id="searchform">
+      <label for="s">
+        <mat-icon class="icon">search</mat-icon>
+      </label>
+      <input (keyup)="applyFilter($event)" placeholder="Search" #input id="s" />
+      <!-- <mat-icon class="icon">clear</mat-icon> -->
+    </div>
+  </div>
+  <!-- Search Input  -->  
+
+
+<!-- Table Section  -->
+
+  <div class="mat-elevation-z8 table">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.FirstName}} {{row.LastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row"> {{row.Email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Phone1">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+        <td mat-cell *matCellDef="let row"> {{row.Phone1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Actions">
+        <th class="table__width" mat-header-cell *matHeaderCellDef> </th>
+        <td class="table__width" mat-cell *matCellDef="let row">
+          <div class="mat__input">
+            <button class="rounded__button btn__light btn_margin" (click)="showDialog(row)">
+              <mat-icon class="edit__icon">edit</mat-icon>Edit</button>
+            <button class="rounded__button btn__light btn_margin delete__btn" (click)="showDeleteDialog(row)">
+              <mat-icon class="edit__icon">delete</mat-icon>Delete</button>
+          </div>
+
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+<!-- Table Section  -->
+
+
+<!-- Loader Animation  -->
+<ng-template #loader>
+  <div class="loader">
+    <img src="../../../../../assets/food-loader-2.gif" />
+  </div>
+
+</ng-template>
+<!-- Loader Animation  -->
+
+
+<!-- User Delete Dialog -->
+<div>
+  <p-dialog header="Delete User" [(visible)]="deleteDialogVisible" [modal]="true" [style]="{ width: '50vw' }"
+      [draggable]="false" [resizable]="false">
+      <div class="modal__section">
+       
+        <p>Are you Sure, You want to Delete it?</p>
+        
+        <div class="delete__btn__section">
+          <button (click)="deleteUser()" class="rounded__button btn btn_margin">Ok</button>
+        <button class="rounded__button btn__light btn_margin">Cancel</button>
+        </div>
+      </div>
+  </p-dialog>
+</div>
+<!-- User Delete Dialog -->

@@ -1,0 +1,36 @@
+<div class="auth__page">
+    <div class="auth__content">
+        <div>
+            <h3>Login Screen</h3>
+            <h1>What's your phone number or email?</h1>
+            <div class="input__section">
+                <div class="mat__input">
+                    <mat-form-field *ngIf="isCountryActive" style=" margin-right: 10px;">
+                        <mat-select [(value)]="selected">
+                            <mat-option value="US">US</mat-option>
+                            <mat-option value="PK">PK</mat-option>
+                            <mat-option value="AUS">AUS</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="email__address">
+                        <input #input (keyup)="handleEmailOrPhone(input.value)"
+                            placeholder="Enter phone number or email" type="text" />
+                        <div *ngIf="isCountryActive" class="country__code">+92</div>
+                    </div>
+                </div>
+                <button (click)="naviageteTo()" class="rounded__button btn">Continue</button>
+
+            </div>
+            <div class="hr__div">
+                <hr style="width: 50%;"><span style="margin: 10px;">or</span>
+                <hr style="width: 50%;">
+            </div>
+
+            <div class="social__accounts__auth">
+                <button class="rounded__button gray__btn">Continue with Google</button>
+                <button class="rounded__button gray__btn">Continue with Apple</button>
+                <button class="rounded__button gray__btn">Continue with Facebook</button>
+            </div>
+        </div>
+    </div>
+</div>

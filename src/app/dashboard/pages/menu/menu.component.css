@@ -1,0 +1,36 @@
+::ng-deep .mat-ink-bar {
+  background-color: var(--primary-orange-color) !important;
+  padding-bottom: 5px;
+}
+.mat-tab-group {
+  top: 0;
+  z-index: auto; 
+  position: sticky;
+  position: -webkit-sticky;
+  background-color: white;
+}
+
+/* ::ng-deep .mat-tab-group {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    position: fixed;
+    top: 70px;
+    width: 100%;
+} */
+
+.custom::ng-deep .mat-tab-label {
+  height: 50px;
+  padding: 0 15px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: 0.6;
+  min-width: max-content;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+}

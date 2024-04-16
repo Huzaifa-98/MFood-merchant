@@ -1,0 +1,143 @@
+<div *ngIf="isLoading" class="store__container">
+    <div class="store__top__addsection">
+        <div>
+            <h1>Stores</h1>
+        </div>
+
+        <div class="store__top__btn__section">
+            <div><Button class="rounded__button see_btn">See Stores in setup</Button></div>
+            <div><Button class="rounded__button add__btn"><mat-icon>add</mat-icon>Add</Button></div>
+        </div>
+    </div>
+
+    <div class="store__filter__section store__filter">
+        <div class="store__search">
+            <!-- <div>
+                <mat-form-field>
+                    <mat-label>Sorting</mat-label>
+                    <mat-select [formControl]="sort">
+                        <mat-option *ngFor="let sortItem of sortList" [value]="sortItem">{{sortItem}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+            <div class="search__input">
+                <div id="searchform" >
+                    <label for="s">
+                        <mat-icon class="icon">search</mat-icon>
+                    </label>
+                    <input (keyup)="applyFilter($event)" placeholder="Search" #input id="s" />
+                </div>
+            </div>
+        </div>
+
+        <div class="store__filter__section">
+            <div>
+                <h2>1 total • Last updated: 11:37 AM</h2>
+            </div>
+            <div><Button class="rounded__button see_btn"><mat-icon>restore</mat-icon></Button></div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div >
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="url">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="image__div">
+                        <img class="image__pic" [src]="element?.url" alt="pic not shown" />
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th class="table__width" mat-header-cell *matHeaderCellDef></th>
+                <td class="table__width" mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="count">
+                <th class="table__width" mat-header-cell *matHeaderCellDef> </th>
+                <td class="table__width" mat-cell *matCellDef="let element"> {{element.count}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th class="table__width" mat-header-cell *matHeaderCellDef> </th>
+                <td class="table__width" mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sales">
+                <th class="table__width" mat-header-cell *matHeaderCellDef> </th>
+                <td class="table__width" mat-cell *matCellDef="let element"> {{element.sales}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="orders">
+                <th class="table__width" mat-header-cell *matHeaderCellDef> </th>
+                <td class="table__width" mat-cell *matCellDef="let element"> {{element.orders}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th class="table__width" mat-header-cell *matHeaderCellDef> </th>
+                <td class="table__width" mat-cell *matCellDef="let element">
+                    <div class="mat__input ">
+                        <!-- <button (click)="handleToggle(element)" class="rounded__button  edit__btn">
+                            Edit
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                            <div (click)="handleSidebar(element)" class="popup">Cover Image {{EditActive}}
+                            </div>
+    
+                        </button> -->
+
+                        <button class="rounded__button  edit__btn">
+                            Edit
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                          
+                            <div (click)="handleSidebar(element)" class="popup">Cover Image {{element?.id}}
+                            </div>
+                        </button>
+
+                        <!-- <div *ngIf="element?.id === EditActive" (click)="sidebarVisible = true" class="popup">Cover Image {{EditActive}}
+                        </div> -->
+
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+    </div>
+    <!-- Table -->
+
+</div>
+
+<p-sidebar (onHide)="EditActive = null" [(visible)]="sidebarVisible" position="right" [style]="{width:'30rem'}">
+    <div class="sidebar__container">
+        <div class="sidebar__content">
+           <div class="sidebar__inner__content">
+            <h1>Cover Image</h1>
+            <h6>Your store must have a cover image to be visible on M Foods.</h6>
+            <h6 class="store_name">D&D Butchery (2655 Lawrence Avenue East)</h6>
+           </div>
+            <div class="store__image">
+                <img src="https://d1ralsognjng37.cloudfront.net/ec69f56a-6051-4cca-88b4-b22b33175932.webp"/>
+            </div>
+        </div>
+        <br>
+        <button  class="rounded__button  edit__btn">
+            Update cover image
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+    </div>
+</p-sidebar>
+
+
+
+
+<div class="loader" *ngIf="!isLoading">
+    <img src="../../../../../assets/food-loader-2.gif"/>
+</div>

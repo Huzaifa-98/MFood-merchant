@@ -1,0 +1,170 @@
+section {
+  max-height: 100vh;
+  overflow: hidden;
+}
+.toolbar-item-spacer {
+  flex: 1 1 auto;
+}
+
+.app-container {
+  display: flex;
+  overflow: hidden;
+  max-height: calc(100vh - 10vh);
+}
+
+.left {
+  position: sticky;
+  overflow: scroll;
+  height: 92vh;
+}
+
+.left::-webkit-scrollbar {
+  width: 5px;
+}
+
+.open {
+  width: 250px;
+  display: inline;
+  transition: all 0.25s;
+  border-right: 1px solid var(--secondary-gray-color);
+}
+.closed {
+  width: 0px;
+  transition: all 0.25s;
+}
+.right {
+  height: max-content;
+  overflow: scroll;
+  max-height: 89.5vh;
+  width: calc(100%);
+}
+
+.navbar__section {
+  background-color: var(--white-color);
+  border-bottom: 1px solid #00000030;
+  z-index: 1000;
+  height: 10vh;
+}
+
+.mat-icon {
+  width: auto;
+  height: auto;
+}
+
+.mat-icon-button {
+  width: 56px;
+}
+
+.help__icon {
+  background-color: var(--secondary-gray-color);
+  border-radius: 52px;
+  width: 100px;
+}
+
+.sidebar__content {
+  position: relative;
+  min-height: max-content;
+  border-radius: 5px;
+  margin: 12px 5px 12px 18px;
+}
+.sidebar__item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row;
+  cursor: pointer;
+  column-gap: 10px;
+}
+
+.sidebar__content:hover {
+  background-color: var(--secondary-gray-color);
+}
+.sidebar__popup {
+  display: none;
+  background-color: var(--white-color);
+  border: 2px solid var(--secondary-gray-color);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  transition: opacity 0.3s ease; /* Add transition effect */
+  opacity: 0;
+}
+
+
+.sidebar__title {
+  margin: 10px 0px;
+  font-weight: 500;
+}
+
+.sidebar__dropdown {
+  margin: 0px 8px;
+}
+
+.active-link {
+  transition: 0.1s ease-in;
+  border-left: 5px solid var(--primary-orange-color);
+  background-color: var(--secondary-gray-color);
+  padding-left: 10px;
+  border-radius: 3px;
+}
+
+.sidebar__icons {
+  color: var(--primary-orange-color);
+  font-size: 25px;
+}
+
+
+.sidebar__icons__arrow {
+  color: var(--btn-hover-dary-gray-color);
+  font-size: 25px;
+}
+
+.m_food_logo {
+  font-weight: 600 !important;
+  color: var(--primary-orange-color);
+}
+
+.sidebar__div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  cursor: pointer;
+  height: 70px;
+}
+
+.sidebar__item h1 {
+  margin: 0px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mat-drawer:not(.mat-drawer-side) {
+  box-shadow: 0 0 0 0;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+/* div.sidebar__popup {
+  display: none;
+} */
+
+.sidebar__popup.expanded {
+  display: block;
+  opacity: 1;
+}
+
+/* div.sidebar__content:hover div.sidebar__popup {
+  display: block;
+} */
+
+.collapsed-icon::before {
+  content: "chevron_right";
+}
+
+.expanded-icon::before {
+  content: "expand_more";
+}

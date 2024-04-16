@@ -1,0 +1,79 @@
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 60px;
+}
+.app-container {
+    height: 85%;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.app-sidenav {
+    width: 250px;
+}
+
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+    width: auto !important;
+}
+
+.app-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar__section {
+    background-color: var(--white-color);
+    border-bottom: 1px solid #00000030;
+}
+.m_food_logo{
+    font-weight: 600;
+    color: var(--primary-orange-color);
+}
+.logo{
+    cursor: pointer;
+
+}
+
+.mat-icon-button {
+    width: 56px;
+}
+
+
+.auth__button{
+    background-color: var(--secondary-gray-color);
+    border-radius: 20px;
+    width: 8%;
+    margin: 6px;
+}
+
+.signUp__button{
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}
+.auth__button:hover{
+    background-color:var(--btn-hover-gray-color);
+
+}
+.signUp__button:hover{
+    background-color: var(--btn-hover-dary-gray-color);
+    
+}
+
+.help__icon {
+    background-color: var(--secondary-gray-color);
+    border-radius: 52px;
+    width: 110px;
+}
+.mat-menu-item .mat-icon {
+    margin-right: 6px;
+}
+.navbar__black{
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}

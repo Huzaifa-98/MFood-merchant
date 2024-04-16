@@ -1,0 +1,328 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.item_div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item_div h4{
+  font-size: 28px;
+  font-weight: 700;
+  margin: 38px 0;
+}
+
+.item_div button{
+  width: 13%;
+}
+
+::ng-deep.p-datatable table{
+  font-size: 14px;
+}
+
+::ng-deep.p-datatable .p-datatable-header {
+  background: transparent;
+  color: #343a40;
+  border: none;
+  border-width: 1px 0 1px 0;
+  padding: 1rem 1rem;
+  font-weight: 700;
+}
+
+::ng-deep.p-datatable .p-datatable-thead > tr > th {
+  text-align: left;
+  padding: 1rem 1rem;
+  border: 1px solid #dee2e6;
+  border-width: 0 0 1px 0;
+  font-weight: 700;
+  color: #343a40;
+  background: transparent;
+  transition: box-shadow 0.2s;
+}
+
+::ng-deep.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: transparent;
+  color: #343a40;
+}
+
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem #000000;
+  border-color: transparent;
+}
+
+.p-inputtext:enabled:hover {
+  border-color: transparent;
+}
+
+.p-inputtext {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  color: #495057;
+  background: #eeeeee;
+  padding: 0.5rem 3.75rem;
+  border: 1px solid #eeeeee;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 6px;
+}
+
+
+
+::ng-deep.p-datatable .p-sortable-column.p-highlight {
+  background: transparent;
+  color: #f16b2a;
+}
+::ng-deep.p-datatable .p-sortable-column.p-highlight:hover {
+  background: transparent;
+  color: #f16b2a;
+}
+
+::ng-deep.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+  color: #f16b2a;
+}
+
+::ng-deep.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: #f16b2a;
+}
+
+::ng-deep.p-datatable .p-sortable-column:focus {
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.item__name__link{
+  text-decoration: none;
+  color: #f16b2a;
+  cursor: pointer;
+}
+
+
+.addItems_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.custom_addItems_row {
+  cursor: pointer;
+}
+
+.newItems__field {
+  width: 100%;
+}
+
+.addItemName__field {
+  width: 100%;
+  margin-top: 30px;
+  position: relative;
+}
+
+.addItemName__field .addItem__Nameinput {
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 90px;
+  background-color: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+
+.addItem__Nameinput_Active{
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 90px;
+  background-color: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 1px solid red;
+}
+
+.addItem__Nameinput_Active:enabled:hover {
+  border-bottom: 1px solid red;
+}
+
+.addItem__Nameinput_Active:enabled:focus {
+  box-shadow: none;
+  border-bottom: 1px solid red;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+.addItem__Nameinput:enabled:hover {
+  border-color: #eeeeee;
+}
+
+.addItem__Nameinput:enabled:focus {
+  box-shadow: none;
+  border-color: #000000;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+
+.addItemName__field i {
+  position: absolute;
+  top: 25%;
+  right: 2%;
+  font-size: 14px;
+  color: #43a422;
+  cursor: pointer;
+}
+
+
+.addItem__remarks {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0;
+}
+
+
+.addItem__Remarksinput {
+  padding-left: 12px;
+}
+
+
+.addItem__remarksLbl {
+  color: #6b6b6b;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.validation-message {
+  font-size: 12px;
+  color: red;
+}
+
+.addItem_btns {
+  display: flex;
+  column-gap: 10px;
+}
+
+
+.add-item-spacing{
+  padding: 16px 0;
+}
+
+.add-item-lbl{
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+
+.add_item_desc{
+  display: flex;
+  flex-direction: column;
+}
+
+.add-item-notes {
+  width: 70%;
+  padding: 12px;
+}
+
+.ctg__field{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container_spacing{
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+.custom-file-input {
+  /* border: 2px solid #ccc; */
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.img_custom {
+  width: 20%;
+}
+
+.img_input {
+  padding: 10px 0;
+}
+
+/* Apply styles to the file input button */
+input[type="file"]::file-selector-button {
+  /* Your custom styles for the file input button */
+  background-color: #f16b2a;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease,
+}
+
+/* Optional: Apply hover styles */
+input[type="file"]::file-selector-button:hover {
+  background-color: var(--btn-hover-orange-color);
+}
+
+
+.menu-info-header {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.menu-info-text-color {
+  color: #000000;
+}
+
+.menu-content-text-color {
+  color: #757575;
+}
+
+
+::ng-deep.p-button.p-button-confrm {
+  background: var(--primary-orange-color);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-confrm:enabled:hover {
+  background: var(--btn-hover-orange-color);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-cancel {
+  background: transparent;
+  color: #000000;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-cancel:enabled:hover {
+  background: var(--btn-hover-gray-color);
+  color: #000000;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-delete {
+  background: var(--red-500);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+::ng-deep.p-button.p-button-delete:enabled:hover {
+  background: var(--red-700);
+  color: #ffffff;
+  border-color: transparent;
+}
